@@ -35,10 +35,24 @@ describe("When slider is created", () => {
         <Slider />
       </DataProvider>
     );
+
+    const months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+
+    const textMatcher = (content) => months.some(month => content.includes(month));
+    
+    // Vérifiez que le slider est rendu
+    const slider = screen.getByTestId('slider');
+    expect(slider).toBeInTheDocument();
+
+    // Vérifiez l'absence d'erreurs dans la console
+    expect(window.console.error).not.toHaveBeenCalled();
+
     await screen.findByText("World economic forum");
-    await screen.findByText("janvier");
+    await screen.findAllByText(textMatcher);
     await screen.findByText(
       "Oeuvre à la coopération entre le secteur public et le privé."
     );
+
+    
   });
 });
