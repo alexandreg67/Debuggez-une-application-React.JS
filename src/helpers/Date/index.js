@@ -13,4 +13,8 @@ export const MONTHS = {
   12: "décembre",
 };
 
-export const getMonth = (date) => MONTHS[date.getMonth()];
+// eslint-disable-next-line arrow-body-style
+export const getMonth = (date) => {
+  // console.log("je suis dans getMonth et je log la date", date.getMonth())
+  return MONTHS[date.getMonth() + 1];
+}
