@@ -11,25 +11,38 @@ const DataContext = createContext({});
 
 export const api = {
   loadData: async () => {
-    const json = await fetch("/events.json");
-    return json.json();
+    const response = await fetch("/events.json");
+    if (!response.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    const data = await response.json();
+    // console.log("je suis dans loadData et je log les données", data);
+    return data;
   },
 };
 
 export const DataProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
+
   const getData = useCallback(async () => {
     try {
-      setData(await api.loadData());
+      const loadData = await api.loadData();
+      // console.log("je suis dans le Provider et je log les données", loadData);
+      setData(loadData);
     } catch (err) {
       setError(err);
     }
   }, []);
+  
   useEffect(() => {
-    if (data) return;
     getData();
-  });
+  }, [getData]);
+
+  // useEffect(() => {
+  //   if (data) return;
+  //   getData();
+  // });
   
   return (
     <DataContext.Provider
