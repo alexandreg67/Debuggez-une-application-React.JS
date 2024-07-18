@@ -17,18 +17,18 @@ const Page = () => {
 
   // console.log("je suis dans la Page Home et je log data", data);
 
-  if (!data) {
-    // console.log("il y a une erreur sur data", data);
-  } 
+  // if (!data) {
+  //   console.log("il y a une erreur sur data", data);
+  // } 
 
   // eslint-disable-next-line no-unsafe-optional-chaining
   const last = data?.events[data?.events.length - 1];
   
   // console.log("je suis dans la Page Home et je log last", last);
 
-  if (!last || !last.cover || !last.title) {
-    // console.log("il y a une erreur sur last", last);
-  }
+  // if (!last || !last.cover || !last.title) {
+  //   console.log("il y a une erreur sur last", last);
+  // }
 
   return <>
     <header>

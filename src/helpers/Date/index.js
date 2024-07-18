@@ -18,3 +18,4 @@ export const getMonth = (date) => {
   // console.log("je suis dans getMonth et je log la date", date.getMonth())
   return MONTHS[date.getMonth() + 1];
 }
+
