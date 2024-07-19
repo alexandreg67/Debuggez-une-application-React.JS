@@ -14,12 +14,12 @@ const EventList = () => {
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
 
-  // if (error) {
-  //   console.log("An error occured",error);
-  // }
+  if (error) {
+    return <div>An error occured</div>;
+  }
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <div>An error occured</div>;
   }
 
   // console.log("Les données sont reçues", data);
@@ -54,6 +54,7 @@ const EventList = () => {
         <>
           <h3 className="SelectTitle">Catégories</h3>
           <Select
+            dataTestId="category-selector"
             selection={Array.from(typeList)}
             onChange={(value) => (value ? changeType(value) : changeType(null))}
           />
